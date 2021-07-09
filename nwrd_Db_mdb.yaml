@@ -1,23 +1,21 @@
-version: '3'
-services: 
-  mongodb:
+# - nwrd-mongo-data:/data/db
+version: "3.1"
+
+services:
+  mongo:
     image: mongo
-    ports: 
+    restart: always
+    ports:
       - 27017:27017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-    volumes: 
+    volumes:
       - nwrd-mongo-data:/data/db
-  mongo-express: 
+
+  mongo-express:
     image: mongo-express
-    ports: 
-      - 8081:8081
-    environment: 
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
-      - ME_CONFIG_MONGODB_SERVER=mongodb
-    depends_on: 
+    restart: always
+    ports:
+      - 8069:8081
+    depends_on:
       - mongodb
 
 volumes:
