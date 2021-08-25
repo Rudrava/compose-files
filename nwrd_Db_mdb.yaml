@@ -6,7 +6,7 @@ services:
     image: mongo
     restart: always
     ports:
-      - 27017:27017
+      - 27018:27017
     volumes:
       - nwrd-mongo-data:/data/db
 
@@ -14,7 +14,7 @@ services:
     image: mongo-express
     restart: always
     ports:
-      - 8069:8081
+      - 8099:8081
     depends_on:
       - mongodb
 
